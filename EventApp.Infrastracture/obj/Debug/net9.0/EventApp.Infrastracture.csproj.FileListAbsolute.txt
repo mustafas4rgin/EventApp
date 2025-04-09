@@ -1,0 +1,17 @@
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/bin/Debug/net9.0/EventApp.Infrastracture.deps.json
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/bin/Debug/net9.0/EventApp.Infrastracture.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/bin/Debug/net9.0/EventApp.Infrastracture.pdb
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/bin/Debug/net9.0/EventApp.Core.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/bin/Debug/net9.0/EventApp.Data.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/bin/Debug/net9.0/EventApp.Data.pdb
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/bin/Debug/net9.0/EventApp.Core.pdb
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.Infrastracture.csproj.AssemblyReference.cache
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.Infrastracture.GeneratedMSBuildEditorConfig.editorconfig
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.Infrastracture.AssemblyInfoInputs.cache
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.Infrastracture.AssemblyInfo.cs
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.Infrastracture.csproj.CoreCompileInputs.cache
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.A58C063A.Up2Date
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.Infrastracture.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/refint/EventApp.Infrastracture.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/EventApp.Infrastracture.pdb
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Infrastracture/obj/Debug/net9.0/ref/EventApp.Infrastracture.dll

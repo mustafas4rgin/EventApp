@@ -1,0 +1,17 @@
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/bin/Debug/net9.0/EventApp.Data.deps.json
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/bin/Debug/net9.0/EventApp.Data.runtimeconfig.json
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/bin/Debug/net9.0/EventApp.Data.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/bin/Debug/net9.0/EventApp.Data.pdb
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/bin/Debug/net9.0/EventApp.Core.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/bin/Debug/net9.0/EventApp.Core.pdb
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.csproj.AssemblyReference.cache
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.AssemblyInfoInputs.cache
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.AssemblyInfo.cs
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.csproj.CoreCompileInputs.cache
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.2796F689.Up2Date
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/refint/EventApp.Data.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.pdb
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/EventApp.Data.genruntimeconfig.cache
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Data/obj/Debug/net9.0/ref/EventApp.Data.dll
