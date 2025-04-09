@@ -1,4 +1,4 @@
-using EventApp.Core.Concrete;
+using EventApp.Application.Concrete;
 using EventApp.Core.Services;
 using Microsoft.Extensions.DependencyInjection;
 

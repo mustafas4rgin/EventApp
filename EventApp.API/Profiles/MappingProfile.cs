@@ -1,6 +1,6 @@
 using AutoMapper;
-using EventApp.Data.DTOs;
-using EventApp.Data.Entities;
+using EventApp.Domain.DTOs;
+using EventApp.Domain.Entities;
 
 namespace EventApp.API.Profiles;
 

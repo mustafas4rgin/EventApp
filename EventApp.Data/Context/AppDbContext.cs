@@ -1,4 +1,4 @@
-using EventApp.Data.Entities;
+using EventApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventApp.Data.Context;

@@ -1,7 +1,7 @@
 using AutoMapper;
 using EventApp.API.Profiles;
+using EventApp.Application.Providers;
 using EventApp.Core.Registrations;
-using EventApp.Infrastracture.Providers;
 using EventApp.Infrastracture.Registrations;
 using FluentValidation;
 
