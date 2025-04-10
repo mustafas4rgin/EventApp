@@ -1,4 +1,4 @@
-using EventApp.Core.Providers;
+using EventApp.Application.Providers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EventApp.Core.Registrations;

@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace EventApp.Domain.Entities;
 
 public class Role : EntityBase

@@ -1,6 +1,6 @@
-using EventApp.Core.Concrete;
+using EventApp.Application.Concrete;
 using EventApp.Data.Context;
-using EventApp.Data.Repository;
+using EventApp.Infrastracture.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

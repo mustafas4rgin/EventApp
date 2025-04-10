@@ -26,16 +26,14 @@ namespace EventApp.API.Controllers
             _service = service;
         }
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            var result = await _service.GetAllAsync();
+            var result = _service.GetAll();
 
             if (!result.Success)
                 return NotFound(result.Message);
 
-            var entities = result.Data;
-
-            return Ok(entities);
+            return Ok(result);
         }
         [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetById(int id)

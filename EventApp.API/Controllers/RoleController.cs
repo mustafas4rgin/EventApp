@@ -1,11 +1,13 @@
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using EventApp.Application.Concrete;
+using EventApp.Core.Services;
 using EventApp.Domain.DTOs;
 using EventApp.Domain.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventApp.API.Controllers
 {
@@ -13,6 +15,25 @@ namespace EventApp.API.Controllers
     [ApiController]
     public class RoleController : GenericController<Role,RoleDTO,UpdateRoleDTO>
     {
-        public RoleController(IValidator<RoleDTO> createValidator,IValidator<UpdateRoleDTO> updateValidator, IMapper mapper, IService<Role> service) : base(service,mapper,createValidator,updateValidator){}
+        private readonly IRoleService _roleService;
+        private readonly IMapper _mapper;
+        public RoleController(IValidator<RoleDTO> createValidator,IValidator<UpdateRoleDTO> updateValidator, IMapper mapper, IRoleService roleService) : base(roleService,mapper,createValidator,updateValidator){
+            _mapper = mapper;
+            _roleService = roleService;
+        }
+        [HttpGet("GetAllWithUsers")]
+        public async Task<IActionResult> GetAllWithUsers()
+        {
+            var result = await _roleService.GetRolesWithUsers();
+
+            if(!result.Success)
+                return NotFound(result.Message);
+
+            var roles = result.Data;
+
+            var dto = _mapper.Map<List<RoleListDTO>>(roles);
+
+            return Ok(dto);
+        }
     }
 }

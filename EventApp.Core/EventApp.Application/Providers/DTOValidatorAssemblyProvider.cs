@@ -1,3 +1,4 @@
+using EventApp.Application.DTOValidators;
 using EventApp.Application.DTOValidators.Event;
 using EventApp.Application.DTOValidators.Role;
 
@@ -11,7 +12,9 @@ public class DTOValidatorAssemblyProvider
             typeof(EventDTOValidator),
             typeof(UpdateEventDTOValidator),
             typeof(RoleDTOValidator),
-            typeof(UpdateRoleDTOValidator)
+            typeof(UpdateRoleDTOValidator),
+            typeof(UserEventRelDTOValidator),
+            typeof(LoginDtoValidator)
         };
     }
 }

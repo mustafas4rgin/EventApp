@@ -1,4 +1,5 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -9,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventApp.Core", "EventApp.Core\EventApp.Core.csproj", "{8A512C3D-7650-4099-8D71-97D335F06A7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventApp.Infrastracture", "EventApp.Infrastracture\EventApp.Infrastracture.csproj", "{6A60683F-0B6E-43EA-987F-B2A7B6314595}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventApp.Helpers", "EventApp.Helpers\EventApp.Helpers.csproj", "{540C9032-8938-462A-9A40-58F1FABCAF52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +33,6 @@ Global
 		{6A60683F-0B6E-43EA-987F-B2A7B6314595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A60683F-0B6E-43EA-987F-B2A7B6314595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A60683F-0B6E-43EA-987F-B2A7B6314595}.Release|Any CPU.Build.0 = Release|Any CPU
-		{540C9032-8938-462A-9A40-58F1FABCAF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{540C9032-8938-462A-9A40-58F1FABCAF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{540C9032-8938-462A-9A40-58F1FABCAF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{540C9032-8938-462A-9A40-58F1FABCAF52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

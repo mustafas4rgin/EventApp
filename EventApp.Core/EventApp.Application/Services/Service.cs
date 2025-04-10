@@ -15,14 +15,14 @@ public class Service<T> : IService<T>
         this.validator = validator;
         this.repository = repository;
     }
-    public async Task<IServiceResult<IEnumerable<T>>> GetAllAsync()
+    public IServiceResult<IQueryable<T>> GetAll()
     {
-        var entities = await repository.GetAll().ToListAsync();
+        var entities = repository.GetAll();
 
-        if (entities == null || entities.Count == 0)
-            return new ErrorResult<IEnumerable<T>>("There is no data.");
+        if (entities == null || entities.ToList().Count <=0 )
+            return new ErrorResult<IQueryable<T>>("There is no data.");
 
-        return new SuccessResult<IEnumerable<T>>("Data found.",entities);
+        return new SuccessResult<IQueryable<T>>("Data found.",entities);
     }
     public async Task<IServiceResult<T>> GetByIdAsync(int id)
     {
