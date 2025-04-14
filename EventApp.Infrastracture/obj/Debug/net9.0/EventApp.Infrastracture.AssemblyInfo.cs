@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EventApp.Infrastracture")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce9d4c6a09198fd566e27d127f7b7a33ad26b05a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16d942616cff1fcb05be4575e2974a404cea358a")]
 [assembly: System.Reflection.AssemblyProductAttribute("EventApp.Infrastracture")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EventApp.Infrastracture")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
