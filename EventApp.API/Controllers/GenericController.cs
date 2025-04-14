@@ -1,9 +1,11 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using EventApp.Application.Concrete;
 using EventApp.Domain.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventApp.API.Controllers
 {
@@ -24,28 +26,6 @@ namespace EventApp.API.Controllers
             _createValidator = createValidator;
             _mapper = mapper;
             _service = service;
-        }
-        [HttpGet("GetAll")]
-        public IActionResult GetAll()
-        {
-            var result = _service.GetAll();
-
-            if (!result.Success)
-                return NotFound(result.Message);
-
-            return Ok(result);
-        }
-        [HttpGet("GetById/{id}")]
-        public async Task<IActionResult> GetById(int id)
-        {
-            var result = await _service.GetByIdAsync(id);
-
-            if (!result.Success)
-                return NotFound(result.Message);
-
-            var entity = result.Data;
-
-            return Ok(entity);
         }
         [HttpPost("Create")]
         public async Task<IActionResult> Create(TDto dto)
@@ -82,7 +62,7 @@ namespace EventApp.API.Controllers
             if(!validationResult.IsValid)
                return BadRequest(validationResult.Errors);
 
-            entity = _mapper.Map(dto, entity);
+            _mapper.Map(dto, entity);
 
             if (entity is IEntityBase entityBase)
             {

@@ -17,13 +17,18 @@ public class MappingProfile : Profile
         CreateMap<Role, RoleListDTO>().ReverseMap();
         CreateMap<Event, EventDTO>().ReverseMap();
         CreateMap<User, UserDTO>().ReverseMap();
+        CreateMap<Event, EventsDTO>()
+            .ForMember(dest => dest.BookedUsers, opt => opt.MapFrom(src => src.BookedUsers))
+            .ForMember(dest => dest.CreatedByUser, opt => opt.MapFrom(src => src.CreatedByUser));
         CreateMap<User, UserWithRoleDTO>()
             .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role));
         CreateMap<Event, EventsWithUsersDTO>()
             .ForMember(dest => dest.BookedUsers, opt => opt.MapFrom(src => src.BookedUsers));
         CreateMap<Event, GetEventsWithCreatedUserDTO>()
             .ForMember(dest => dest.CreatedByUser,opt => opt.MapFrom(src => src.CreatedByUser));
-        CreateMap<User, UserWithEventsDTO>()
-            .ForMember(dest => dest.BookedEvents,opt => opt.MapFrom(src => src.BookedEvents));
+        CreateMap<User, UsersDTO>()
+            .ForMember(dest => dest.BookedEvents,opt => opt.MapFrom(src => src.BookedEvents))
+            .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role));
+        CreateMap<UpdateUserDTO, User>().ReverseMap();
     }
 }

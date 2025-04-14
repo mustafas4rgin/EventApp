@@ -1,6 +1,7 @@
 using EventApp.Application.Concrete;
 using EventApp.Application.Helpers;
 using EventApp.Application.Results;
+using EventApp.Core.Services;
 using EventApp.Domain.DTOs;
 using EventApp.Domain.Entities;
 using FluentValidation;
@@ -8,63 +9,103 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventApp.Application.Services;
 
-public class UserService : IUserService
+public class UserService :Service<User>, IUserService
 {
     private readonly IRepository<User> _repository;
     private readonly IValidator<User> _validator;
-    public UserService(IRepository<User> repository,IValidator<User> validator)
+    public UserService(IRepository<User> repository, IValidator<User> validator) : base(repository,validator)
     {
         _repository = repository;
         _validator = validator;
     }
-    public async Task<IServiceResult<IEnumerable<User>>> GetAllUsersWithRoleAsync()
+    public async Task<IServiceResult> DeleteUserAsync(int id)
     {
-        var users = await _repository.GetAll()
-                    .Include(u => u.Role)
-                    .ToListAsync();
-
-        if(!users.Any() || users.Count() <= 0)
-            return new ErrorResult<IEnumerable<User>>("There is no user.");
-
-        return new SuccessResult<IEnumerable<User>>("Users:",users);
-    }
-    public async Task<IServiceResult<IEnumerable<User>>> GetAllUsersWithBookedEventsAsync()
-    {
-        var users = await _repository.GetAll()
-                    .Include(u => u.BookedEvents)
-                    .ToListAsync();
+        var user = await _repository.GetByIdAsync(id);
         
-        if(!users.Any() || users.Count() <= 0)
-            return new ErrorResult<IEnumerable<User>>("There is no user.");
+        if (user is null)
+           return new RawErrorResult($"There is no user with ID: {id}");
 
-        return new SuccessResult<IEnumerable<User>>("Users:",users);
-    }
-    public async Task<IServiceResult<User>> LoginAsync(LoginDTO dto)
-    {
-        var user = await _repository.GetAll().FirstOrDefaultAsync(u => u.Email == dto.Email);
-
-        if(user is null)
-            return new ErrorResult<User>("User not found.");           
-        
-        return new SuccessResult<User>("User found",user);
-    }
-    public async Task<IServiceResult> RegisterAsync(UserDTO dto)
-    {
-        var existingUser = await _repository.GetAll().FirstOrDefaultAsync(u => u.Email == dto.Email || u.Username == dto.Username);
-
-        if(existingUser is not null)
-            return new RawErrorResult("There is a user with this email or username.");
-
-        var newUser = MappingHelper.UserMap(dto);
-
-        var validationResult = await _validator.ValidateAsync(newUser);
-
-        if(!validationResult.IsValid)
-            return new RawErrorResult(string.Join(" | ", validationResult.Errors.Select(e => e.ErrorMessage)));
-
-        await _repository.AddAsync(newUser);
+        await _repository.DeleteByIdAsync(id);
         await _repository.SaveChangesAsync();
 
-        return new RawSuccessResult("User registered successfully.");
+        return new RawSuccessResult("User deleted successfully.");
+    }
+    public async Task<IServiceResult<IEnumerable<User>>> GetUsersWithIncludesAsync(string? include)
+    {
+        try
+        {
+            var query = _repository.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(include))
+            {
+                var includes = include.Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var inc in includes.Select(x => x.Trim().ToLower()))
+                {
+                    if (inc == "role")
+                        query = query.Include(e => e.Role);
+                    else if (inc == "bookedevents")
+                        query = query.Include(e => e.BookedEvents);
+                }
+            }
+
+            var eventEntity = await query.ToListAsync();
+
+            if (eventEntity == null)
+                return new ErrorResult<IEnumerable<User>>("No user found.");
+
+            return new SuccessResult<IEnumerable<User>>("Users found.", eventEntity);
+        }
+
+        catch (Exception ex)
+        {
+            return new ErrorResult<IEnumerable<User>>(ex.Message);
+        }
+    }
+    public async Task<IServiceResult> UpdateUserAsync(User user)
+    {
+        if (user is null)
+            return new ErrorResult<User>("User cannot be null.");
+
+        var validationResult = await _validator.ValidateAsync(user);
+
+        if (!validationResult.IsValid)
+            return new ErrorResult<User>(string.Join(" | ", validationResult.Errors.Select(e => e.ErrorMessage)));
+
+        await _repository.UpdateAsync(user);
+        await _repository.SaveChangesAsync();
+
+        return new SuccessResult<User>("User updated successfully.",user);
+    }
+    public async Task<IServiceResult<User>> GetUserWithIncludeAsync(int id, string? include)
+    {
+        try
+        {
+            var query = _repository.GetAll();
+
+            if (!string.IsNullOrWhiteSpace(include))
+            {
+                var includes = include.Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (var inc in includes.Select(x => x.Trim().ToLower()))
+                {
+                    if (inc == "role")
+                        query = query.Include(e => e.Role);
+                    else if (inc == "bookedevents")
+                        query = query.Include(e => e.BookedEvents);
+                }
+            }
+
+            var userEntity = await query.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (userEntity == null)
+                return new ErrorResult<User>("No user found.");
+
+            return new SuccessResult<User>("User found.", userEntity);
+        }
+        catch (Exception ex)
+        {
+            return new ErrorResult<User>(ex.Message);
+        }
     }
 }

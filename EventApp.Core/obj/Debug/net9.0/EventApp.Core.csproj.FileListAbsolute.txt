@@ -1,13 +1,13 @@
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.deps.json
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.runtimeconfig.json
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.pdb
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.csproj.AssemblyReference.cache
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.GeneratedMSBuildEditorConfig.editorconfig
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.AssemblyInfoInputs.cache
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.AssemblyInfo.cs
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.csproj.CoreCompileInputs.cache
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.sourcelink.json
-/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.deps.json
-/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.runtimeconfig.json
-/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.dll
-/Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/bin/Debug/net9.0/EventApp.Core.pdb
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.dll
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/refint/EventApp.Core.dll
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.Core/obj/Debug/net9.0/EventApp.Core.pdb

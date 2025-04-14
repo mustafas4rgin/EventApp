@@ -14,73 +14,75 @@ namespace EventApp.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly IValidator<UserDTO> _registerValidator;
-        private readonly IValidator<LoginDTO> _loginValidator;
+        private readonly IValidator<UpdateUserDTO> _updateValidator;
         private readonly IMapper _mapper;
-        public UserController(IMapper mapper, IUserService userService,IValidator<LoginDTO> loginValidator, IValidator<UserDTO> registerValidator)
+        public UserController(IValidator<UpdateUserDTO> updateValidator, IMapper mapper, IUserService userService)
         {
+            _updateValidator = updateValidator;
             _mapper = mapper;
-            _registerValidator = registerValidator;
-            _loginValidator = loginValidator;
             _userService = userService;
         }
-        [HttpGet("users-with-role")]
-        public async Task<IActionResult> GetUsersWitRole()
+        [HttpPut("Update/{userId}")]
+        public async Task<IActionResult> UpdateUser(int userId, UpdateUserDTO dto)
         {
-            var result = await _userService.GetAllUsersWithRoleAsync();
+            var userResult = await _userService.GetByIdAsync(userId);
+
+            if (!userResult.Success)
+                return NotFound(userResult.Message);
+
+            var validationResult = await _updateValidator.ValidateAsync(dto);
+
+            if (!validationResult.IsValid)
+                return BadRequest(validationResult.Errors);
+
+            var user = userResult.Data;
+
+            _mapper.Map(dto, user);
+
+            var updateResult = await _userService.UpdateUserAsync(user);
+
+            if (!updateResult.Success)
+                return BadRequest(updateResult.Message);
             
-            if(!result.Success)
+            return Ok(updateResult.Message);
+        }
+        [HttpDelete("Delete/{userId}")]
+        public async Task<IActionResult> DeleteUser(int userId)
+        {
+            var result = await _userService.DeleteUserAsync(userId);
+
+            if (!result.Success)
+                return NotFound(result.Message);
+
+            return Ok(result.Message);
+        }
+        [HttpGet("users/{userId}")]
+        public async Task<IActionResult> GetUser(int userId, string? include)
+        {
+            var result = await _userService.GetUserWithIncludeAsync(userId, include);
+
+            if (!result.Success)
+                return NotFound(result.Message);
+
+            var user = result.Data;
+
+            var dto = _mapper.Map<UsersDTO>(user);
+
+            return Ok(dto);
+        }
+        [HttpGet("get-users")]
+        public async Task<IActionResult> GetUsers([FromQuery] string? include)
+        {
+            var result = await _userService.GetUsersWithIncludesAsync(include);
+
+            if (!result.Success)
                 return NotFound(result.Message);
 
             var users = result.Data;
 
-            var dto = _mapper.Map<List<UserWithRoleDTO>>(users);
+            var dto = _mapper.Map<List<UsersDTO>>(users);
 
             return Ok(dto);
-        }
-        [HttpGet("users-with-events")]
-        public async Task<IActionResult> GetUsersWithEvents()
-        {
-            var result = await _userService.GetAllUsersWithBookedEventsAsync();
-
-            if(!result.Success)
-                return NotFound(result.Message);
-
-            var users = result.Data;
-
-            var dto = _mapper.Map<List<UserWithEventsDTO>>(users);
-
-            return Ok(dto);
-        }
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginDTO dto)
-        {
-            var validationResult = await _loginValidator.ValidateAsync(dto);
-
-            if(!validationResult.IsValid)
-                return BadRequest(validationResult.Errors);
-
-            var result = await _userService.LoginAsync(dto);
-
-            if(!result.Success)
-                return BadRequest(result.Message);
-
-            return Ok(result);
-        }
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(UserDTO dto)
-        {
-            var validationResult = await _registerValidator.ValidateAsync(dto);
-
-            if(!validationResult.IsValid)
-                return BadRequest(validationResult.Errors);
-
-            var result = await _userService.RegisterAsync(dto);
-
-            if(!result.Success)
-                return BadRequest(result.Message);
-
-            return Ok(result);
         }
     }
 }

@@ -16,6 +16,17 @@ public class RoleService : Service<Role>, IRoleService
         _repository = repository;
         _validator = validator;
     }
+    public async Task<IServiceResult<Role>> GetRoleWithUser(int id)
+    {
+        var role = await _repository.GetAll()
+                    .Include(r => r.Users)
+                    .FirstOrDefaultAsync(r => r.Id == id);
+
+        if (role is null)
+            return new ErrorResult<Role>($"There is no role with this ID: {id}");
+
+        return new SuccessResult<Role>("Role: ",role);
+    }
     public async Task<IServiceResult<IEnumerable<Role>>> GetRolesWithUsers()
     {
         var roles = await _repository.GetAll()

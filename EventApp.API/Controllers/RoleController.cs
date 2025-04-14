@@ -21,7 +21,7 @@ namespace EventApp.API.Controllers
             _mapper = mapper;
             _roleService = roleService;
         }
-        [HttpGet("GetAllWithUsers")]
+        [HttpGet("GetRoles")]
         public async Task<IActionResult> GetAllWithUsers()
         {
             var result = await _roleService.GetRolesWithUsers();
@@ -32,6 +32,20 @@ namespace EventApp.API.Controllers
             var roles = result.Data;
 
             var dto = _mapper.Map<List<RoleListDTO>>(roles);
+
+            return Ok(dto);
+        }
+        [HttpGet("GetRole/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var result = await _roleService.GetRoleWithUser(id);
+
+            if (!result.Success)
+                return NotFound(result.Message);
+
+            var role = result.Data;
+
+            var dto = _mapper.Map<RoleListDTO>(role);
 
             return Ok(dto);
         }

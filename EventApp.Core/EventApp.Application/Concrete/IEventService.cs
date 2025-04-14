@@ -4,6 +4,6 @@ namespace EventApp.Application.Concrete;
 
 public interface IEventService : IService<Event>
 {
-    Task<IServiceResult<IEnumerable<Event>>> GetEventsWithCreator();
-    Task<IServiceResult<IEnumerable<Event>>> GetEventsWithBookedUsers();
+    Task<IServiceResult<IEnumerable<Event>>> GetEventsWithIncludesAsync(string? includes);
+    Task<IServiceResult<Event>> GetByIdWithIncludesAsync(int id, string? includes);
 }

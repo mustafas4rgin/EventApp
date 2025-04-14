@@ -9,4 +9,5 @@ public class UserListDTO
     public string Phone { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+
 }

@@ -3,10 +3,10 @@ using EventApp.Domain.Entities;
 
 namespace EventApp.Application.Concrete;
 
-public interface IUserService
+public interface IUserService : IService<User>
 {
-    Task<IServiceResult<User>> LoginAsync(LoginDTO dto);
-    Task<IServiceResult> RegisterAsync(UserDTO dto);
-    Task<IServiceResult<IEnumerable<User>>> GetAllUsersWithBookedEventsAsync();
-    Task<IServiceResult<IEnumerable<User>>> GetAllUsersWithRoleAsync();
+    Task<IServiceResult<IEnumerable<User>>> GetUsersWithIncludesAsync(string? include);
+    Task<IServiceResult<User>> GetUserWithIncludeAsync(int id, string? include);
+    Task<IServiceResult> DeleteUserAsync(int id);
+    Task<IServiceResult> UpdateUserAsync(User User);
 }

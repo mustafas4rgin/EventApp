@@ -58,3 +58,11 @@
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/obj/Debug/net9.0/EventApp.API.pdb
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/obj/Debug/net9.0/EventApp.API.genruntimeconfig.cache
 /Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/obj/Debug/net9.0/ref/EventApp.API.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/Microsoft.IdentityModel.Logging.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
+/Users/s4rgin/Desktop/Projects/EventApp/EventApp.API/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll

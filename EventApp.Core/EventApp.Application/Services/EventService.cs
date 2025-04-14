@@ -11,31 +11,74 @@ public class EventService : Service<Event>, IEventService
 {
     private readonly IRepository<Event> _repository;
     private readonly IValidator<Event> _validator;
-    public EventService(IRepository<Event> repository, IValidator<Event> validator) : base(repository,validator)
+    public EventService(IRepository<Event> repository, IValidator<Event> validator) : base(repository, validator)
     {
         _repository = repository;
         _validator = validator;
     }
-    public async Task<IServiceResult<IEnumerable<Event>>> GetEventsWithCreator()
+    public async Task<IServiceResult<Event>> GetByIdWithIncludesAsync(int id, string? include)
     {
-        var events =await _repository.GetAll()
-                    .Include(e => e.CreatedByUser)
-                    .ToListAsync();
+        try
+        {
+            var query = _repository.GetAll();
 
-        if(!events.Any() || events.Count() <= 0)
-            return new ErrorResult<IEnumerable<Event>>("There is no event.");
+            if (!string.IsNullOrWhiteSpace(include))
+            {
+                var includes = include.Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-        return new SuccessResult<IEnumerable<Event>>("Events:",events);
+                foreach (var inc in includes.Select(x => x.Trim().ToLower()))
+                {
+                    if (inc == "creator")
+                        query = query.Include(e => e.CreatedByUser);
+                    else if (inc == "bookedusers")
+                        query = query.Include(e => e.BookedUsers);
+                }
+            }
+
+            var eventEntity = await query.FirstOrDefaultAsync(e => e.Id == id);
+
+            if (eventEntity == null)
+                return new ErrorResult<Event>("No event found.");
+
+            return new SuccessResult<Event>("Event found.", eventEntity);
+        }
+
+        catch (Exception ex)
+        {
+            return new ErrorResult<Event>(ex.Message);
+        }
     }
-    public async Task<IServiceResult<IEnumerable<Event>>> GetEventsWithBookedUsers()
+    public async Task<IServiceResult<IEnumerable<Event>>> GetEventsWithIncludesAsync(string? include)
     {
-        var events = await _repository.GetAll()
-                    .Include(e => e.BookedUsers)
-                    .ToListAsync();
+        try
+        {
+            var query = _repository.GetAll();
 
-        if(!events.Any() || events.Count() <= 0)
-            return new ErrorResult<IEnumerable<Event>>("There is no event.");
+            if (!string.IsNullOrWhiteSpace(include))
+            {
+                var includes = include.Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-        return new SuccessResult<IEnumerable<Event>>("Events:",events);
+                foreach (var inc in includes.Select(x => x.Trim().ToLower()))
+                {
+                    if (inc == "creator")
+                        query = query.Include(e => e.CreatedByUser);
+
+                    else if (inc == "bookedusers")
+                        query = query.Include(e => e.BookedUsers);
+                }
+            }
+
+            var events = await query.ToListAsync();
+
+            if (!events.Any())
+                return new ErrorResult<IEnumerable<Event>>("There is no event");
+
+            return new SuccessResult<IEnumerable<Event>>("Events: ", events);
+        }
+        catch (Exception ex)
+        {
+            return new ErrorResult<IEnumerable<Event>>(ex.Message);
+        }
     }
+
 }

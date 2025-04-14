@@ -14,7 +14,8 @@ public class DTOValidatorAssemblyProvider
             typeof(RoleDTOValidator),
             typeof(UpdateRoleDTOValidator),
             typeof(UserEventRelDTOValidator),
-            typeof(LoginDtoValidator)
+            typeof(LoginDtoValidator),
+            typeof(UpdateUserDTOValidator)
         };
     }
 }

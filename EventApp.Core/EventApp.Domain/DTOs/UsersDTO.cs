@@ -1,6 +1,6 @@
 namespace EventApp.Domain.DTOs;
 
-public class UserWithEventsDTO
+public class UsersDTO
 {
     public int Id { get; set; }
     public string Name { get; set; } = null!;
@@ -10,4 +10,5 @@ public class UserWithEventsDTO
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public List<EventDTO> BookedEvents { get; set; } = null!;
+    public RoleDTO Role { get; set; } = null!;
 }
