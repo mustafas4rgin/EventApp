@@ -73,6 +73,3 @@ EventApp
 - `PUT /api/events/{id}`
 - `DELETE /api/events/{id}`
 
-## ✍️ Katkıda Bulun
-
-Pull request’lere ve issue’lara açıksın kanka. Forkla, geliştir, paylaş 😎
