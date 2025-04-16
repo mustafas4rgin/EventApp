@@ -42,14 +42,13 @@ EventApp/
 
 ### 🔧 Backend (.NET)
 ```bash
-cd backend
 # Gerekli NuGet paketlerini yükle
 # ve veritabanı yapılandırmalarını tamamla
 ```
 
 ### 💻 Frontend (React)
 ```bash
-cd frontend
+cd eventapp.app
 npm install
 npm run dev # veya npm start
 ```
