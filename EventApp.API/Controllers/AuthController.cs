@@ -1,3 +1,4 @@
+using AutoMapper;
 using EventApp.Application.Concrete;
 using EventApp.Domain.DTOs;
 using FluentValidation;
@@ -13,8 +14,10 @@ namespace EventApp.API.Controllers
         private readonly IAuthService _authService;
         private readonly IValidator<LoginDTO> _loginValidator;
         private readonly IValidator<UserDTO> _registerValidator;
-        public AuthController(IAuthService authService, IValidator<LoginDTO> loginValidator, IValidator<UserDTO> registerValidator)
+        private readonly IMapper _mapper;
+        public AuthController(IMapper mapper, IAuthService authService, IValidator<LoginDTO> loginValidator, IValidator<UserDTO> registerValidator)
         {
+            _mapper = mapper;
             _authService = authService;
             _loginValidator = loginValidator;
             _registerValidator = registerValidator;
@@ -32,9 +35,15 @@ namespace EventApp.API.Controllers
             if (!result.Success)
                 return NotFound(result.Message);
 
-            var token = result.Data;
+            var user = result.Data;
 
-            return Ok(token);
+            var userDto = _mapper.Map<UsersDTO>(user);
+
+            return Ok(new
+            {
+                user = userDto,
+                token = result.Message
+            });
         }
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserDTO dto)
@@ -50,6 +59,26 @@ namespace EventApp.API.Controllers
                 return BadRequest(result.Message);
 
             return Ok(result);
+        }
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            var result = await _authService.ForgotPasswordAsync(email);
+
+            if (!result.Success)
+                return NotFound(result.Message);
+
+            return Ok(result.Message);
+        }
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody]ResetPasswordDTO dto)
+        {
+            var result = await _authService.ResetPasswordAsync(dto.Token, dto.NewPassword);
+
+            if (!result.Success)
+                return NotFound(result.Message);
+
+            return Ok(result.Message);
         }
     }
 }

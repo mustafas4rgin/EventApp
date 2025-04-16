@@ -32,6 +32,8 @@ public class EventService : Service<Event>, IEventService
                         query = query.Include(e => e.CreatedByUser);
                     else if (inc == "bookedusers")
                         query = query.Include(e => e.BookedUsers);
+                    else if (inc == "creator-bookedusers")
+                        query = query.Include(e => e.CreatedByUser).Include(e => e.BookedUsers);
                 }
             }
 

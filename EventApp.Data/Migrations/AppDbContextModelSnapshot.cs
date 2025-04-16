@@ -22,7 +22,7 @@ namespace EventApp.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("EventApp.Data.Entities.Event", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,7 +56,7 @@ namespace EventApp.Data.Migrations
                     b.ToTable("Events", (string)null);
                 });
 
-            modelBuilder.Entity("EventApp.Data.Entities.EventUserRel", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.EventUserRel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,7 +85,7 @@ namespace EventApp.Data.Migrations
                     b.ToTable("EventUserRels", (string)null);
                 });
 
-            modelBuilder.Entity("EventApp.Data.Entities.Role", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,7 +109,7 @@ namespace EventApp.Data.Migrations
                     b.ToTable("Roles", (string)null);
                 });
 
-            modelBuilder.Entity("EventApp.Data.Entities.User", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,6 +146,9 @@ namespace EventApp.Data.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
 
+                    b.Property<DateTime>("TokenExpiration")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -154,6 +157,10 @@ namespace EventApp.Data.Migrations
                         .HasMaxLength(25)
                         .HasColumnType("character varying(25)");
 
+                    b.Property<string>("ValidationToken")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RoleId");
@@ -161,9 +168,9 @@ namespace EventApp.Data.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("EventApp.Data.Entities.Event", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.Event", b =>
                 {
-                    b.HasOne("EventApp.Data.Entities.User", "CreatedByUser")
+                    b.HasOne("EventApp.Domain.Entities.User", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedByUserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -172,15 +179,15 @@ namespace EventApp.Data.Migrations
                     b.Navigation("CreatedByUser");
                 });
 
-            modelBuilder.Entity("EventApp.Data.Entities.EventUserRel", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.EventUserRel", b =>
                 {
-                    b.HasOne("EventApp.Data.Entities.Event", "Event")
+                    b.HasOne("EventApp.Domain.Entities.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EventApp.Data.Entities.User", "User")
+                    b.HasOne("EventApp.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -191,9 +198,9 @@ namespace EventApp.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("EventApp.Data.Entities.User", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.User", b =>
                 {
-                    b.HasOne("EventApp.Data.Entities.Role", "Role")
+                    b.HasOne("EventApp.Domain.Entities.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -202,7 +209,7 @@ namespace EventApp.Data.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("EventApp.Data.Entities.Role", b =>
+            modelBuilder.Entity("EventApp.Domain.Entities.Role", b =>
                 {
                     b.Navigation("Users");
                 });

@@ -15,7 +15,10 @@ public class ServiceRegistrationProvider
             (typeof(IUserService),typeof(UserService)),
             (typeof(IEventService),typeof(EventService)),
             (typeof(IRoleService),typeof(RoleService)),
-            (typeof(IAuthService),typeof(AuthService))
+            (typeof(IAuthService),typeof(AuthService)),
+            (typeof(IUserEventRel),typeof(UserEventRelService)),
+            (typeof(IAdminService),typeof(AdminService)),
+            (typeof(IEmailService),typeof(SmtpEmailService)),
         };
         foreach (var service in servicesToRegister)
         {

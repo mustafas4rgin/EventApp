@@ -6,6 +6,19 @@ using EventApp.Infrastracture.Registrations;
 using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000") // React uygulamanın adresi
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials(); // Eğer cookie ile authentication yapıyorsan bunu ekle
+        });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSwaggerGen();
@@ -33,6 +46,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCors("AllowFrontend");
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>

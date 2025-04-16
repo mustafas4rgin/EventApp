@@ -9,6 +9,6 @@ public class UsersDTO
     public string Phone { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
-    public List<EventDTO> BookedEvents { get; set; } = null!;
+    public List<EventsDTO> BookedEvents { get; set; } = null!;
     public RoleDTO Role { get; set; } = null!;
 }

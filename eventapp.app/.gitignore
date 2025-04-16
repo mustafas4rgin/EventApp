@@ -1,0 +1,36 @@
+# 🔁 Genel kaynak: https://github.com/github/gitignore/blob/main/Node.gitignore
+
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# dotenv config
+.env
+.env.*.local
+
+# build outputs
+dist/
+build/
+coverage/
+
+# misc
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# VS Code
+.vscode/
+
+# log dosyaları
+logs
+*.log
+
+# macOS
+*.DS_Store
+
+# Optional production runtime
+.next/
+out/

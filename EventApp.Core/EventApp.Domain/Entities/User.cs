@@ -7,6 +7,8 @@ public class User : EntityBase
     public string Username { get; set; } = null!;
     public string Phone { get; set; } = null!;
     public int RoleId { get; set; }
+    public string ValidationToken { get; set; } = string.Empty;
+    public DateTime TokenExpiration { get; set; }
     public byte[] PasswordHash { get; set; } = null!;
     public byte[] PasswordSalt { get; set; } = null!;
     public Role Role { get; set; } = null!;

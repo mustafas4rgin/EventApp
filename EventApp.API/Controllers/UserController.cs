@@ -1,6 +1,7 @@
 
 using AutoMapper;
 using EventApp.Application.Concrete;
+using EventApp.Data.Context;
 using EventApp.Domain.DTOs;
 using EventApp.Domain.Entities;
 using FluentValidation;
@@ -16,7 +17,7 @@ namespace EventApp.API.Controllers
         private readonly IUserService _userService;
         private readonly IValidator<UpdateUserDTO> _updateValidator;
         private readonly IMapper _mapper;
-        public UserController(IValidator<UpdateUserDTO> updateValidator, IMapper mapper, IUserService userService)
+        public UserController( IValidator<UpdateUserDTO> updateValidator, IMapper mapper, IUserService userService)
         {
             _updateValidator = updateValidator;
             _mapper = mapper;

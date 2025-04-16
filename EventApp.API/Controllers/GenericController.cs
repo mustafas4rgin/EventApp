@@ -27,6 +27,20 @@ namespace EventApp.API.Controllers
             _mapper = mapper;
             _service = service;
         }
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result =_service.GetAll();
+
+            if(!result.Success)
+                return NotFound(result.Message);
+
+            var entities = result.Data;
+
+            var dto = _mapper.Map<List<TDto>>(entities);
+
+            return Ok(dto);
+        }
         [HttpPost("Create")]
         public async Task<IActionResult> Create(TDto dto)
         {
