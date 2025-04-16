@@ -75,15 +75,6 @@ VITE_API_BASE_URL=http://localhost:5148
 
 ---
 
-## 📸 Ekran Görüntüleri (opsiyonel)
-
-İstersen proje ekran görüntülerini buraya ekleyebiliriz:
-```
-[home]<img width="1417" alt="Screenshot 2025-04-16 at 11 51 47" src="https://github.com/user-attachments/assets/80ef7149-e8a1-4a1f-aee8-da848349df2d" />
-[dashboard]<img width="1508" alt="Screenshot 2025-04-16 at 11 52 48" src="https://github.com/user-attachments/assets/65acb790-e45a-4c95-b411-925e54f682ba" />
-[AdminPanel]<img width="1511" alt="Screenshot 2025-04-16 at 11 53 57" src="https://github.com/user-attachments/assets/a9c5afda-4d4d-4fe4-9d5c-9de4591f3868" />
-
-```
 
 ---
 
