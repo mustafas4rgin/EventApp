@@ -1,75 +1,90 @@
+# 🎉 EventApp
 
-# 📘 Proje Dokümantasyonu
+**EventApp**, kullanıcıların etkinlik oluşturabildiği, rezervasyon yapabildiği, admin paneliyle kullanıcı ve etkinlikleri yönetebildiği tam özellikli bir web uygulamasıdır.
 
-## 🎉 EventApp Nedir?
+## 🚀 Özellikler
 
-EventApp, etkinlikleri yönetmek için geliştirilen, modüler ve katmanlı mimariye sahip bir ASP.NET Core Web API uygulamasıdır.
+- 🔐 Kullanıcı girişi ve kayıt (JWT ile kimlik doğrulama)
+- 📅 Etkinlik listeleme, detay sayfası ve rezervasyon
+- 🌙 Karanlık mod (Dark mode toggle)
+- 🛡️ Admin paneli:
+  - Kullanıcı yönetimi (rol atama, silme, sayfalama, arama)
+  - Etkinlik yönetimi (ekleme, silme, arama, sayfalama)
+- 🔁 Şifre sıfırlama (email ile token gönderimi)
+- ✅ Frontend: **React + Tailwind + Framer Motion + Axios**
+- ✅ Backend: **ASP.NET Core Web API** (EF Core, JWT, FluentValidation vs.)
 
-## 🔧 Kullanılan Teknolojiler
+---
 
-- ASP.NET Core 7.0
-- Entity Framework Core
-- AutoMapper
-- SQL Server
-- Repository Pattern
-- Katmanlı Mimari (API, Core, Data, Infrastructure)
-
-## 🏗️ Proje Yapısı
+## 🧩 Proje Yapısı
 
 ```
-EventApp
-│
-├── EventApp.API              → API uç noktalarının bulunduğu katman
-│   ├── Controllers
-│   ├── Profiles
-│   └── Program.cs
-│
-├── EventApp.Core             → Domain modelleri ve servis arayüzleri
-│   ├── Domain
-│   ├── Application
-│   └── Registrations
-│
-├── EventApp.Data             → EF Core DbContext, Migrations ve konfigürasyonlar
+EventApp/
+├── EventApp.API/              # ASP.NET Core API 
+├── eventapp.app/              # React uygulaması 
+│   ├── src/
+│   ├── public/
+│   └── ...
+├── EventApp.Core/
+│   ├── EventApp.Application
+│   ├── EventApp.Domain
+└── ...
+├── EventApp.Data/
+│   ├── Migrations
 │   ├── Context
-│   ├── Configurations
-│   └── Migrations
-│
-├── EventApp.Infrastracture  → Repository implementasyonları ve servis kayıtları
-│   ├── Repository
-│   └── Registrations
-│
-└── EventApp.sln              → Visual Studio çözüm dosyası
+├── EventApp.Infrastructure/
+└── README.md
 ```
 
-## 🚀 Kurulum
+---
 
-1. Repoyu klonla:
-   ```bash
-   git clone https://github.com/mustafas4rgin/EventApp.git
-   cd EventApp
-   ```
+## ⚙️ Kurulum
 
-2. NuGet paketlerini yükle:
-   ```bash
-   dotnet restore
-   ```
+### 🔧 Backend (.NET)
+```bash
+cd backend
+# Gerekli NuGet paketlerini yükle
+# ve veritabanı yapılandırmalarını tamamla
+```
 
-3. `appsettings.json` dosyasında veritabanı bağlantı ayarlarını yap.
+### 💻 Frontend (React)
+```bash
+cd frontend
+npm install
+npm run dev # veya npm start
+```
 
-4. Migration’ları uygula:
-   ```bash
-   dotnet ef database update --project EventApp.Data
-   ```
+> `.env` dosyasına API adresini yazmayı unutma:
+```
+VITE_API_BASE_URL=http://localhost:5148
+```
 
-5. Uygulamayı başlat:
-   ```bash
-   dotnet run --project EventApp.API
-   ```
+---
 
-## 📂 Örnek API Uç Noktaları
+## 👑 Geliştiriciler
+**[@mustafas4rgin](https://github.com/mustafas4rgin)**
 
-- `GET /api/events`
-- `POST /api/events`
-- `PUT /api/events/{id}`
-- `DELETE /api/events/{id}`
+
+---
+
+## 📦 Ekstra
+
+- Dark mode toggle: localStorage ile kalıcı tema
+- Tüm formlarda client-side validasyon
+- Şifre sıfırlama: token ile güvenli işlem
+- Admin route korumaları ve erişim kontrolü
+
+---
+
+## 📸 Ekran Görüntüleri (opsiyonel)
+
+İstersen proje ekran görüntülerini buraya ekleyebiliriz:
+```
+[home]<img width="1417" alt="Screenshot 2025-04-16 at 11 51 47" src="https://github.com/user-attachments/assets/80ef7149-e8a1-4a1f-aee8-da848349df2d" />
+[dashboard]<img width="1508" alt="Screenshot 2025-04-16 at 11 52 48" src="https://github.com/user-attachments/assets/65acb790-e45a-4c95-b411-925e54f682ba" />
+[AdminPanel]<img width="1511" alt="Screenshot 2025-04-16 at 11 53 57" src="https://github.com/user-attachments/assets/a9c5afda-4d4d-4fe4-9d5c-9de4591f3868" />
+
+```
+
+---
 
